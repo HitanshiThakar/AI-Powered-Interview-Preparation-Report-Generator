@@ -1,0 +1,340 @@
+{
+  matchScore: 82,
+  technicalQuestions: [
+    {
+      question: 'How does the Node.js event loop work, and how do you handle CPU-intensive tasks without blocking it?',
+      intention: "Assess candidate's deep understanding of Node.js internal architecture, libuv, thread pool, and non-blocking asynchronous I/O execution.",
+      answer: 'Explain the phases of the event loop (timers, pending callbacks, idle/prepare, poll, check, close callbacks). Discuss how CPU-bound tasks block the single-threaded event loop and detail solutions such as offloading tasks to Worker Threads (worker_threads module), child processes, or an external task queue service like Redis BullMQ.'
+    },
+    {
+      question: 'How have you optimized MongoDB queries and aggregation pipelines for high-traffic applications?',
+      intention: 'Evaluate experience with database performance tuning, indexing strategies, and complex data pipeline processing.',
+      answer: "Discuss the use of explain('executionStats') to identify COLLSCAN vs IXSCAN, creating compound indexes and covered queries, optimizing aggregation pipelines by placing $match and $project stages early, and utilizing projection to restrict payload size."
+    },
+    {
+      question: 'How would you architect a secure and scalable real-time notification or chat system using Node.js and WebSockets/Socket.io?',
+      intention: "Test the candidate's real-world architecture design skills, session management, and horizontal scalability handling.",
+      answer: 'Describe using Socket.io with an adapter (such as Redis Pub/Sub) across multiple Node.js instances behind a load balancer with sticky sessions or WebSocket upgrades. Cover authentication handshakes with JWT, error handling, heartbeats, and database persistence strategies.'
+    },
+    {
+      question: 'What strategies do you use for error handling and logging in Express.js microservices?',
+      intention: 'Determine adherence to production standards, observability, and defensive programming practices.',
+      answer: 'Cover centralized error handling middleware in Express, differentiating between operational errors and programmer errors, structured logging with libraries like Winston or Pino, correlating requests via Correlation IDs, and utilizing health check endpoints.'
+    }
+  ],
+  behavioralQuestions: [
+    {
+      question: 'Describe a situation where you identified a performance bottleneck in production. How did you diagnose and resolve it?',
+      intention: 'Evaluate analytical problem-solving, debugging methodologies, and practical impact on system stability.',
+      answer: 'Use the STAR method: describe the scenario (e.g., latency spikes in REST API), the task (identifying the root cause), the action taken (profiling with APM tools, examining slow query logs, adjusting database indexes or code logic), and the measurable result (e.g., latency drop, reduced server load).'
+    },
+    {
+      question: 'How do you handle disagreement with a frontend developer or product manager regarding API contract design?',
+      intention: 'Assess communication, collaboration, and adherence to API standards in cross-functional teams.',
+      answer: 'Focus on constructive alignment using API contracts (OpenAPI/Swagger specs), prioritizing end-user experience, discussing trade-offs pragmatically (performance vs ease of consumption), and reaching consensus through prototyping or technical documentation.'
+    }
+  ],
+  skillGaps: [
+    { skill: 'Cloud Platforms (AWS / Azure)', severity: 'high' },
+    {
+      skill: 'Test-Driven Development (TDD) and Unit Testing (Jest/Mocha)',
+      severity: 'medium'
+    },
+    {
+      skill: 'Microservices Architecture Patterns',
+      severity: 'medium'
+    },
+    {
+      skill: 'Relational Databases (MySQL/PostgreSQL)',
+      severity: 'low'
+    }
+  ],
+  preparationPlan: [
+    {
+      day: 1,
+      focus: 'Node.js Core Internals and Asynchronous Patterns',
+      tasks: [Array]
+    },
+    {
+      day: 2,
+      focus: 'Express.js Architecture and API Security',
+      tasks: [Array]
+    },
+    {
+      day: 3,
+      focus: 'MongoDB Performance and Query Tuning',
+      tasks: [Array]
+    },
+    {
+      day: 4,
+      focus: 'Cloud Services and Microservices Concepts',
+      tasks: [Array]
+    },
+    {
+      day: 5,
+      focus: 'Frontend Integration and Testing (TDD)',
+      tasks: [Array]
+    }
+  ]
+}
+Interview report received.
+undefined
+
+ 
+
+ //Another
+ Server is running on port 3000
+Connected to Database
+{
+  matchScore: 88,
+  technicalQuestions: [
+    {
+      question: 'How do Express middleware functions work, and how would you implement a custom JWT authentication middleware in Node.js?',
+      intention: 'Assess practical understanding of request-response lifecycle in Express, middleware chaining, and JWT token verification.',
+      answer: "Explain that middleware functions have access to the req, res, and next objects. Walk through extracting the Bearer token from the 'Authorization' header, verifying it using `jsonwebtoken.verify()`, attaching the decoded user payload to `req.user`, and calling `next()`. Cover error handling scenarios like expired tokens or missing headers returning a 401 Unauthorized status."
+    },
+    {
+      question: 'How do you handle asynchronous operations in Node.js, and what happens under the hood with the Event Loop?',
+      intention: 'Evaluate deep understanding of Node.js non-blocking I/O, Promises, async/await, and microtask/macrotask execution.',
+      answer: 'Contrast callbacks, Promises, and async/await syntax. Describe the event loop phases (timers, I/O callbacks, poll, check, close callbacks) and explain how microtasks (process.nextTick, resolved promises) execute immediately after the current operation before moving to the next phase.'
+    },
+    {
+      question: 'Can you explain the difference between SQL and NoSQL databases, and when you would choose MongoDB over a relational database like PostgreSQL?',
+      intention: 'Test schema design fundamentals, understanding of relational constraints vs document model flexibility, and normalization.',
+      answer: 'Highlight ACID compliance, rigid relational schemas, foreign keys, and complex JOINs in SQL versus flexible schema, horizontal scalability, and nested document representations in MongoDB. State that PostgreSQL is ideal for structured transactional financial/billing data, whereas MongoDB fits rapidly changing schemas or unstructured nested feeds.'
+    },
+    {
+      question: 'What is database indexing, how does a B-Tree index work, and what are the performance trade-offs of adding multiple indexes to a table?',
+      intention: "Gauge candidate's knowledge of query optimization and relational database internals.",
+      answer: 'Explain that an index speeds up data retrieval (`SELECT` queries) by creating an ordered lookup structure (typically B-Tree) to avoid full table scans. Mention the trade-offs: index overhead consumes extra disk space and slows down write operations (`INSERT`, `UPDATE`, `DELETE`) because indexes must be updated simultaneously.'
+    },
+    {
+      question: 'How did you handle bulk uploads and data validation during your backend internship using Node.js and SQLite?',
+      intention: 'Verify real-world backend experience from the internship, handling batch processing and database transactions.',
+      answer: 'Describe parsing payloads or CSV/JSON files, validating data before execution, and using database transactions (e.g., `BEGIN TRANSACTION` / `COMMIT`) so that failures roll back safely. Mention memory management techniques such as streams or batching into chunks to prevent out-of-memory errors on large payloads.'
+    }
+  ],
+  behavioralQuestions: [
+    {
+      question: 'Describe a challenging bug you encountered in a Node.js or backend project and how you went about debugging it.',
+      intention: 'Evaluate problem-solving strategy, patience, root-cause analysis, and debugging toolkit familiarity.',
+      answer: 'Use the STAR method (Situation, Task, Action, Result). State the problem (e.g., race condition, uncaught promise rejection, or SQLite lock), explain the debugging steps (reading stack traces, adding logging, reproducing locally, inspecting DB state), and conclude with the fix and preventative measures taken.'
+    },
+    {
+      question: 'How do you approach learning a new framework, tool, or library when assigned a task you have no prior experience with?',
+      intention: 'Assess adaptability, self-direction, and eagerness to grow in an internship setting.',
+      answer: 'Discuss starting with official documentation and core architecture overviews, building a minimal proof-of-concept project, reviewing open-source implementations or existing codebases, and seeking mentorship feedback after attempting solutions independently.'
+    },
+    {
+      question: 'Tell me about a time you had to collaborate with a teammate or frontend engineer to integrate an API.',
+      intention: 'Assess communication skills, contract-first design awareness (e.g., Swagger/Postman), and teamwork.',
+      answer: 'Explain establishing API contracts beforehand (specifying request formats, response payloads, error codes), using tools like Postman to share collections, and actively communicating to resolve discrepancies during frontend-backend integration.'
+    }
+  ],
+  skillGaps: [
+    {
+      skill: 'Relational Database Indexing & Query Optimization (PostgreSQL / MySQL)',
+      severity: 'medium'
+    },
+    {
+      skill: 'Automated Unit & Integration Testing (Jest, Mocha, Supertest)',
+      severity: 'medium'
+    },
+    {
+      skill: 'Production Error Handling & Structured Logging',
+      severity: 'low'
+    }
+  ],
+  preparationPlan: [
+    {
+      day: 1,
+      focus: 'Express.js & REST API Core Concepts',
+      tasks: [Array]
+    },
+    {
+      day: 2,
+      focus: 'SQL, PostgreSQL & Relational Database Design',
+      tasks: [Array]
+    },
+    { day: 3, focus: 'NoSQL & MongoDB Integration', tasks: [Array] },
+    {
+      day: 4,
+      focus: 'Node.js Asynchronous Internals & TypeScript',
+      tasks: [Array]
+    },
+    {
+      day: 5,
+      focus: 'API Testing, Postman & Git Workflows',
+      tasks: [Array]
+    },
+    {
+      day: 6,
+      focus: 'Internship Project Review & Mock Interview',
+      tasks: [Array]
+    }
+  ]
+}
+
+
+//3
+{
+  matchScore: 88,
+  technicalQuestions: [
+    {
+      question: 'How does the Node.js event loop work, and how do async/await and Promises interact with it?',
+      intention: "Assess the candidate's core understanding of Node.js asynchronous architecture and non-blocking I/O.",
+      answer: 'Explain the single-threaded nature of JavaScript and the call stack. Describe how asynchronous operations are offloaded to Libuv, and when complete, callbacks move to the microtask queue (Promises) or macrotask queue (timers, I/O). Emphasize that async/await is syntactic sugar over Promises and executes microtasks.'
+    },
+    {
+      question: 'How would you implement JWT-based authentication and authorization middleware in Express.js?',
+      intention: 'Evaluate practical knowledge of securing REST APIs and handling token verification via Express middleware.',
+      answer: "Outline creating a login route that verifies credentials and issues a signed JWT. Detail writing a middleware function that extracts the Bearer token from the 'Authorization' header, verifies it with jsonwebtoken.verify, attaches the decoded payload to req.user, and calls next() or returns a 401/403 status code on error."
+    },
+    {
+      question: 'What is the difference between an INNER JOIN, LEFT JOIN, and how can database indexing improve query performance?',
+      intention: 'Evaluate SQL knowledge, relational database concepts, and query optimization awareness.',
+      answer: 'Explain that INNER JOIN returns matching records from both tables, while LEFT JOIN returns all records from the left table and matched records from the right. Discuss how B-tree indexes allow logarithmic search time instead of full table scans, while acknowledging that too many indexes increase write latency.'
+    },
+    {
+      question: 'In your previous internship, how did you handle bulk uploads in Node.js without running into memory or timeout issues?',
+      intention: "Probe the candidate's real-world internship experience and understanding of data streaming or batching.",
+      answer: 'Discuss chunking or streaming data instead of loading entire files into memory. Mention using Node.js streams, database transactions with batch inserts (e.g., in SQLite or PostgreSQL), and proper validation and error logging to ensure atomicity.'
+    }
+  ],
+  behavioralQuestions: [
+    {
+      question: 'Describe a difficult bug you encountered during your internship at Billnox and how you tracked it down.',
+      intention: 'Assess problem-solving methodology, debugging persistence, and ability to handle edge cases.',
+      answer: 'Use the STAR method: Situation (the issue in the billing app), Task (identifying why data failed or misbehaved), Action (using logs, breakpoints, reproducing edge cases), and Result (resolving the bug and adding tests/validation to prevent regression).'
+    },
+    {
+      question: 'How do you manage your time when learning a new tool or technology while working on a tight project deadline?',
+      intention: 'Check willingness to learn, adaptability, and time management skills.',
+      answer: 'Highlight a structured approach: breaking down documentation into core concepts required for the task, building a minimal proof-of-concept, asking senior peers for guidance when stuck, and refining code incrementally.'
+    }
+  ],
+  skillGaps: [
+    {
+      skill: 'Automated Unit and Integration Testing (e.g., Jest, Mocha, Supertest)',
+      severity: 'medium'
+    },
+    {
+      skill: 'Database Indexing and Advanced Query Optimization',
+      severity: 'medium'
+    },
+    {
+      skill: 'PostgreSQL Specific Features and Complex Relational Schema Design',
+      severity: 'low'
+    }
+  ],
+  preparationPlan: [
+    {
+      day: 1,
+      focus: 'Node.js Fundamentals & Asynchronous Patterns',
+      tasks: [Array]
+    },
+    {
+      day: 2,
+      focus: 'REST API Architecture & Express Middleware',
+      tasks: [Array]
+    },
+    {
+      day: 3,
+      focus: 'Relational Databases & SQL Optimization',
+      tasks: [Array]
+    },
+    {
+      day: 4,
+      focus: 'NoSQL with MongoDB & Data Modeling',
+      tasks: [Array]
+    },
+    {
+      day: 5,
+      focus: 'Unit Testing & Practical Experience Review',
+      tasks: [Array]
+    }
+  ]
+}
+{
+  matchScore: 88,
+  technicalQuestions: [
+    {
+      question: 'How does the Node.js event loop work, and how does it handle asynchronous I/O operations under the hood?',
+      intention: "Assess the candidate's deep understanding of Node.js runtime architecture, non-blocking I/O, and asynchronous execution.",
+      answer: 'Explain the single-threaded nature of JavaScript and the role of libuv. Describe the phases of the event loop (timers, pending callbacks, poll, check, close callbacks). Mention microtasks (Promise callbacks, process.nextTick) having priority over macrotasks, and discuss how worker threads handle file/network I/O asynchronously.'
+    },
+    {
+      question: 'How do you implement JWT authentication in an Express.js application, and how do you protect routes with middleware?',
+      intention: 'Evaluate practical backend security knowledge and familiarity with Express middleware patterns.',
+      answer: 'Discuss issuing a signed JWT containing payload and secret/private key upon successful login. Detail creating a middleware function to extract the Bearer token from the Authorization header, verify it with jwt.verify, handle expiration/malformed token errors, attach decoded user data to req.user, and call next() to grant access.'
+    },
+    {
+      question: 'What is the difference between SQL and NoSQL database indexing, and how does an index improve query performance?',
+      intention: 'Gauge understanding of database optimization, B-Trees vs hash/document indexes, and trade-offs.',
+      answer: 'Explain that indexes (commonly B-Tree structures) speed up read operations by avoiding full table scans at the expense of slower write operations and extra storage. Compare relational indexing (e.g., composite indexes, primary keys) with MongoDB indexing (e.g., compound, single field), and discuss the importance of using EXPLAIN to analyze query execution plans.'
+    },
+    {
+      question: 'During your internship at Billnox, you handled bulk uploads. How did you optimize batch inserts or handle large data ingestion without blocking memory?',
+      intention: 'Evaluate real-world experience, practical problem-solving, and scalability concerns.',
+      answer: 'Describe strategies such as batching database inserts into chunks rather than single iterative inserts, utilizing database transactions for atomicity, leveraging Node.js streams or worker threads to prevent high memory usage, and implementing proper error recovery/logging for failed records.'
+    }
+  ],
+  behavioralQuestions: [
+    {
+      question: 'Describe a difficult bug you encountered during your internship at Billnox and the methodical process you followed to debug it.',
+      intention: 'Assess analytical thinking, systematic debugging techniques, and perseverance under pressure.',
+      answer: 'Use the STAR method (Situation, Task, Action, Result). State the bug, explain the tools used (logging, breakpoints, Postman, database logs), walk through isolating root cause vs. symptoms, and conclude with the resolution and steps taken to prevent recurrence (e.g., adding unit tests or input validation).'
+    },
+    {
+      question: 'How do you manage deadlines when collaborating with frontend engineers waiting on your API endpoints?',
+      intention: 'Evaluate communication, teamwork, cross-functional collaboration, and proactive problem resolution.',
+      answer: 'Highlight API contract design (e.g., Swagger/OpenAPI or Postman collections) established early on, creating mock API responses so frontend developers are unblocked while backend logic is being completed, and maintaining continuous transparent communication regarding progress or blockers.'
+    }
+  ],
+  skillGaps: [
+    {
+      skill: 'Unit and Integration Testing (e.g., Jest, Supertest, Mocha)',
+      severity: 'medium'
+    },
+    {
+      skill: 'Advanced Database Optimization (Execution plans, Index tuning, Deep Normalization)',
+      severity: 'medium'
+    },
+    {
+      skill: 'System Design fundamentals and caching strategies (e.g., Redis)',
+      severity: 'low'
+    }
+  ],
+  preparationPlan: [
+    {
+      day: 1,
+      focus: 'Core Node.js & Asynchronous Architecture',
+      tasks: [Array]
+    },
+    {
+      day: 2,
+      focus: 'Authentication & Express Security',
+      tasks: [Array]
+    },
+    {
+      day: 3,
+      focus: 'Relational Databases & SQL Mastery',
+      tasks: [Array]
+    },
+    {
+      day: 4,
+      focus: 'NoSQL (MongoDB) & Schema Design',
+      tasks: [Array]
+    },
+    {
+      day: 5,
+      focus: 'Automated Testing & Clean Architecture',
+      tasks: [Array]
+    },
+    {
+      day: 6,
+      focus: 'Internship Project Review & Behavioral Prep',
+      tasks: [Array]
+    }
+  ]
+}
