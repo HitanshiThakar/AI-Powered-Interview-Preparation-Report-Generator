@@ -9,13 +9,27 @@ import connectToDB from "./src/config/database.js";
 // import { resume, selfDescription, jobDescription } from "./src/services/temp.js";
 // import { generateInterviewReport } from "./src/services/ai.service.js";
 
-// Connect to MongoDB
-connectToDB();
+
 
 // Start the server
-app.listen(3000, () => {
-    console.log("Server is running on port 3000");
-});
+
+const PORT = process.env.PORT || 3000;
+
+async function startServer() {
+    try {
+        await connectToDB();
+
+        app.listen(PORT, "0.0.0.0", () => {
+            console.log(`Server is running on port ${PORT}`);
+        });
+    } catch (error) {
+        console.error("Failed to start server:", error.message);
+        process.exit(1);
+    }
+}
+
+startServer();
+
 
 // Temporary test: call Gemini manually when needed.
 // Avoid calling it on every server startup in your final application.

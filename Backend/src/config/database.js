@@ -7,8 +7,9 @@ async function connectToDB() {
     console.log("Connected to Database")
 }
 catch(err){
-    console.log(err)
+    console.error("Database connection failed:", err.message);
+    throw err;
 }
 }
 
-export default connectToDB
+export default connectToDB;
